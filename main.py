@@ -8,8 +8,6 @@ from dotenv import load_dotenv
 from keep_alive import keep_alive
 from collections import deque
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
@@ -31,8 +29,6 @@ intents.members = True
 intents.message_content = True
 
 bot = commands.Bot(command_prefix = '!', intents = intents)
-
-GUILD_ID = discord.Object(id = 1465063962604212306)
 
 @bot.event
 async def on_ready():
