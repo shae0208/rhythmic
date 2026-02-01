@@ -25,7 +25,6 @@ def _extract(query, ydl_opts):
 
 intents = discord.Intents.default()
 intents.presences = True
-intents.members = True
 intents.message_content = True
 
 bot = commands.Bot(command_prefix = '!', intents = intents)
