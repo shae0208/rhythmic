@@ -34,6 +34,28 @@ async def on_ready():
     await bot.tree.sync()
     print(f"{bot.user.name} is now online")
 
+@bot.tree.command(name = 'help', description = "Helpful information about the bot")
+async def help(interaction: discord.Interaction):
+    overview = (
+        "Welcome to Rhythmic Music Bot!\n"
+        "Created by Bl4ckh4wkTTV\n\n"
+        "Rhythmic is a comprehensive music bot with youtube query integration that allows users to add songs to a queue, sit back, and enjoy the music."
+    )
+    
+    commands = (
+        "/play Play a song or add to the queue\n"
+        "/pause Pause the current track\n"
+        "/resume Resume the current track\n"
+        "/skip Skip the current track\n"
+        "/stop Stop playback, clear the queue, and disconnect bot from voice channel"
+    )
+    
+    embed = discord.Embed(title = 'Rhythmic Help', description = overview)
+    embed.set_thumbnail(url = bot.user.avatar.url)
+    embed.add_field(name = 'Commands', value = commands)
+    
+    await interaction.response.send_message(embed = embed)
+
 @bot.tree.command(name = 'play', description = "Play a song or add it to the queue")
 @app_commands.describe(song_query = 'Search Query')
 async def play(interaction: discord.Interaction, song_query: str):
